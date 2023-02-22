@@ -8,6 +8,29 @@ This repository provides the entire summary of Lokeshwar Peddigari's hands-on wo
 By examining all potential paths for timing violations, static timing analysis (STA) is a technique for evaluating the timing performance of a design. STA divides a design into timing paths, determines the delay in signal propagation along each path, and looks for timing constraints that have been violated both inside the design and at the input/output interface.
 
 It starts with basics of Static Timing Analysis, timing paths, startpoint, endpoint and combinational logic definitions. It explains setup and hold checks, how STA tools calculate setup and hold violations. Then it slowly builds up to cover all aspects of STA like multiple types of timing paths, design rule checks, checks on async pins and clock gates. After that we go into slightly advanced topics like Time borrowing on latches, timing arcs, cell delays and models, impact of clock network on STA. Since STA and timing constraints go hand in hand the workshop covers basics of all the timing constraints that an engineer should know for STA like clock definitions, clock groups, clock characteristics, port delays and timing exceptions.
+* [Day 1](#day-1)
+    + [STA Defination](#STA-Defination)
+    + [Timing Paths](#Timing-Paths)
+    + [Setup & Hold Checks](#Setup-&-Hold-Checks)
+    + [Slack Calculation](#Slack-Calculation)
+    + [SDC File](#SDC-File)
+    + [Clock](#Clock)
+    + [Port Delays and Boundary Constrains](#Port-Delays-and-Boundary-Constrains)
+    + [Lab 1](#Lab-1)
+        - [OpenSTA](#OpenSTA)
+        - [Constraints Creation](#Constraints-Creation)
+        - [Run OpenSTA](#Run-OpenSTA)
+* [Day 2](#day-2)
+    + [Other Timing Checks](#Other-Timing-Checks)
+    + [Design Rule Checks](#Design-Rule-Checks)
+    + [Latch Timing](#Latch-Timing)
+    + [STA Text Report](#STA-Text-Report)
+    + [Lab 2](#Lab-2)
+        - [Liberty Files](#Liberty-Files)
+        - [Exercise 1](#Exercise-1)
+        - [SPEF Files](#SPEF-Files)
+        - [Exercise 2](#Exercise-2)
+* [Day 3](#day-3)
 
 ## Day-1 Summary
 ## Day-1 Labs
@@ -66,6 +89,11 @@ netlist data structures without duplicating them.
 
 * Query based incremental update of delays, arrival and required times
 * Simulator to propagate constants from constraints and netlist tie high/low
+
+### Inputs to OpenSTA
+1. Netlist Verilog File (provided in TCL file read_verilog command)
+    
+#### Standard cells or lib cells instantiations in `simple.v` file
 
 
 
