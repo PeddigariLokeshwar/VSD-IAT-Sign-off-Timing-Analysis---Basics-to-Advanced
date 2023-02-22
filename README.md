@@ -12,7 +12,7 @@ It starts with basics of Static Timing Analysis, timing paths, startpoint, endpo
    - [OpenSTA](#ot_Intro)
    - [Inputs to OpenSTA](#ot_inputs)
    - [RunScript](#ot_RunScript)
-   - [Run OpenSTA]  
+   - [Run OpenSTA](#Run-OpenSTA)  
 * [Day-2 Labs](#day-2-labs)
   - [Liberty Files](#Liberty-Files)
   - [Exercise 1](#Exercise-1)
