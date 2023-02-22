@@ -9,10 +9,10 @@ By examining all potential paths for timing violations, static timing analysis (
 
 It starts with basics of Static Timing Analysis, timing paths, startpoint, endpoint and combinational logic definitions. It explains setup and hold checks, how STA tools calculate setup and hold violations. Then it slowly builds up to cover all aspects of STA like multiple types of timing paths, design rule checks, checks on async pins and clock gates. After that we go into slightly advanced topics like Time borrowing on latches, timing arcs, cell delays and models, impact of clock network on STA. Since STA and timing constraints go hand in hand the workshop covers basics of all the timing constraints that an engineer should know for STA like clock definitions, clock groups, clock characteristics, port delays and timing exceptions.
  * [Day-1 Labs](#day-1-labs)
-  - [OpenSTA](#ot_Intro)
-  - [Inputs to OpenSTA](#ot_inputs)
-  - [RunScript](#ot_RunScript)
-  - [Run OpenSTA]  
+   - [OpenSTA](#ot_Intro)
+   - [Inputs to OpenSTA](#ot_inputs)
+   - [RunScript](#ot_RunScript)
+   - [Run OpenSTA]  
 * [Day-2 Labs](#day-2-labs)
   - [Liberty Files](#Liberty-Files)
   - [Exercise 1](#Exercise-1)
