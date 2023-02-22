@@ -8,18 +8,25 @@ This repository provides the entire summary of Lokeshwar Peddigari's hands-on wo
 By examining all potential paths for timing violations, static timing analysis (STA) is a technique for evaluating the timing performance of a design. STA divides a design into timing paths, determines the delay in signal propagation along each path, and looks for timing constraints that have been violated both inside the design and at the input/output interface.
 
 It starts with basics of Static Timing Analysis, timing paths, startpoint, endpoint and combinational logic definitions. It explains setup and hold checks, how STA tools calculate setup and hold violations. Then it slowly builds up to cover all aspects of STA like multiple types of timing paths, design rule checks, checks on async pins and clock gates. After that we go into slightly advanced topics like Time borrowing on latches, timing arcs, cell delays and models, impact of clock network on STA. Since STA and timing constraints go hand in hand the workshop covers basics of all the timing constraints that an engineer should know for STA like clock definitions, clock groups, clock characteristics, port delays and timing exceptions.
-* [Day 1](#day-1)
-    + [Lab 1](#Lab-1)
-        - [OpenSTA](#OpenSTA)
-        - [Constraints Creation](#Constraints-Creation)
-        - [Run OpenSTA](#Run-OpenSTA)
-* [Day 2](#day-2)
-    + [Lab 2](#Lab-2)
-        - [Liberty Files](#Liberty-Files)
-        - [Exercise 1](#Exercise-1)
-        - [SPEF Files](#SPEF-Files)
-        - [Exercise 2](#Exercise-2)
-* [Day 3](#day-3)
+ * [Day-1 Labs](#day-1-labs)
+  - [OpenSTA](#ot_Intro)
+  - [Inputs to OpenSTA](#ot_inputs)
+  - [RunScript](#ot_RunScript)
+  - [Run OpenSTA]  
+* [Day-2 Labs](#day-2-labs)
+  - [Liberty Files](#Liberty-Files)
+  - [Exercise 1](#Exercise-1)
+  - [SPEF Files](#SPEF-Files)
+  - [Exercise 2](#Exercise-2)
+* [Day-3 Labs](#day-3-labs)
+  - [Slack computation](#slack-computation)
+* [Day-4 Labs](#day-4-labs)
+  - [Clock Gating Checks](#Clock-Gating-Checks)
+  - [Async Pin Checks](#Async-Pin-Checks)
+* [Day-5 Labs](#day-5-labs)
+  - [CPPR - comman path pessimism removal](#CPPR)
+  - [ECO - Engineering Change Order](#ECO)
+_________________________________________________________________________________________________________________________________________________________________
 
 ## Day-1 Labs
 
@@ -112,7 +119,7 @@ netlist data structures without duplicating them.
     <img src="https://user-images.githubusercontent.com/105622389/220652726-b5ae368d-daf3-44f4-8ad6-40896e579f0a.jpg " width="483" height="244.5" />
 
 
-### runScript
+### RunScript
 - In runscript you can define all the commands you want to run in the openSTA tool
 - Tool will execute each command sequentially in order(There are some commands which are executed in parallel in some cases)
 - Runscript is in `.tcl` format.
@@ -203,9 +210,133 @@ Rerun  `sta run.tcl –exit | tee run.log`
 ## Day-3 Labs
 
 Design schematic for slack computation
-	![lab3 schematic](https://user-images.githubusercontent.com/105622389/220720081-327a6a8a-63ce-4b24-9de9-26d9c468a233.jpg)
+![lab3 schematic](https://user-images.githubusercontent.com/105622389/220720081-327a6a8a-63ce-4b24-9de9-26d9c468a233.jpg)
+![image](https://user-images.githubusercontent.com/105622389/220721946-853c220c-83fd-4af1-b1bb-88ef13f2f7ba.png)
+
  - run script should include the following command to check the slack of different timing paths from F1/CLK to F2
   `report_checks –from F1/CK -endpoint_count 100`
   
  ![image](https://user-images.githubusercontent.com/105622389/220720642-8fa66a74-f83b-4420-bc98-b7e883862b71.png)
+ 
+ - different paths reported
+ ##### Path1
+![lab3 exp1](https://user-images.githubusercontent.com/105622389/220722359-1cef09c4-9a45-48b9-8d06-1612cfcf05b1.jpg)
+![image](https://user-images.githubusercontent.com/105622389/220722375-8290beb9-fa01-44cf-af4c-eb281f1c011c.png)
+##### Path2
+![lab3 exp2](https://user-images.githubusercontent.com/105622389/220722992-f473a103-b729-4e36-95cb-550df4d058c9.jpg)
+![image](https://user-images.githubusercontent.com/105622389/220723423-83b2c58a-8621-439a-95c6-566a97b5889f.png)
 
+##### Path3
+![lab3 exp3](https://user-images.githubusercontent.com/105622389/220723021-8bcfe435-ccc1-4017-bf88-c17138282fcf.jpg)
+![image](https://user-images.githubusercontent.com/105622389/220723553-6b1c8a9c-ede7-4549-bd37-34115cfebf5e.png)
+
+##### Path4
+![lab3 exp4](https://user-images.githubusercontent.com/105622389/220723064-ebd392e0-b326-40ff-a87a-90b5e12abf69.jpg)
+![image](https://user-images.githubusercontent.com/105622389/220723645-0b5b12e5-7d36-4b8b-8fbe-12a80f2369cc.png)
+
+
+##### Path5
+![lab3 exp5](https://user-images.githubusercontent.com/105622389/220723115-e19d9c92-0e70-4d49-903f-c8539d17f44a.jpg)
+![image](https://user-images.githubusercontent.com/105622389/220723697-2e848c38-b01f-44dd-954a-adae1286920f.png)
+
+
+##### Path6
+![lab3 exp6](https://user-images.githubusercontent.com/105622389/220723211-29fb36c3-3ed8-4a3c-8352-b6d62e3861c6.jpg)
+![image](https://user-images.githubusercontent.com/105622389/220723779-cd46c402-fa55-4e39-9902-4a1ceda50157.png)
+
+
+##### Path7
+![lab3 exp7](https://user-images.githubusercontent.com/105622389/220723240-b914f781-525e-4563-bcc1-01571d960e2c.jpg)
+![image](https://user-images.githubusercontent.com/105622389/220723896-732750c3-aa51-472f-8dda-debe7ca36732.png)
+
+
+##### Path8
+![lab3 exp8](https://user-images.githubusercontent.com/105622389/220723267-0caa59e7-674d-4172-a243-a4efebae6809.jpg)
+![image](https://user-images.githubusercontent.com/105622389/220723966-a68340da-285c-4ce2-be94-cfcfa38d5404.png)
+
+## Day-4 Labs
+1.Clock Gating Checks
+ * Gating techniques used is ‘Active Low Clock Gating’
+ * run.tcl file 
+ 
+![lab4 clock gating run tcl](https://user-images.githubusercontent.com/105622389/220728323-1be5c723-8f6a-4fbb-9afe-b12fc4bd1408.jpg)
+
+Slack Violated on the clogated report
+
+![lab4 exp1](https://user-images.githubusercontent.com/105622389/220728439-ad0ab66c-707d-4db8-9018-89a4eb75c9f1.jpg)
+
+2.Async Pin Checks
+ * Recovery and Removal checks
+ * run.tcl file
+ 
+ ![image](https://user-images.githubusercontent.com/105622389/220729447-282857ed-1a0e-4dc8-97f3-2578261ab17a.png)
+ 
+ Slack met the timing contraints
+ 
+ ![image](https://user-images.githubusercontent.com/105622389/220729767-80134281-d4fe-4a3c-bd99-7aa3806f7abd.png)
+
+## Day-5 Labs
+1.CPPR 
+Removing common clock buffer delay between launch path and capture path is CPPR. (comman path pessimism removal).
+![image](https://user-images.githubusercontent.com/105622389/220731470-f1bfe6a1-b204-4929-9169-bdc9f78250e4.png)
+* run.tcl file before enabling CRPR 
+
+![image](https://user-images.githubusercontent.com/105622389/220731702-58e6c6e5-ad06-4de9-8f3a-efa86682bfb8.png)
+* report before enabling
+ 
+![lab5 before crpr](https://user-images.githubusercontent.com/105622389/220732023-69d9f9d8-3ce4-4963-a87e-fb63732fcb29.jpg)
+
+* Enabling CRPR using command `set sta_crpr_enabled 1`
+* Reported a reduced slack compared to the before enabling.
+
+![image](https://user-images.githubusercontent.com/105622389/220732785-ea36dd8a-a720-4021-9eb5-447a38869a6b.png)
+![image](https://user-images.githubusercontent.com/105622389/220732937-987a4608-7d3b-423c-aa12-1e3eb483195c.png)
+
+2.ECO - Engineering Change Order
+• In the ECO cycle, we perform various analysis one by one for every 
+check which we need to close but not closed till PnR stage. 
+• There are specialized signoff tools that help us to analyze the issue 
+and also suggest the changes we need to do in order to close the 
+issue. 
+• The suggested change is captured in an eco file.
+• In this lab we will focus on ECO for timing purposes, this is done to fix 
+setup and hold violations
+
+- run.tcl file with ECO insertions
+
+![lab5 run tcl](https://user-images.githubusercontent.com/105622389/220733746-5bb65735-4a91-4702-b6fa-f1060ba5848d.jpg)
+
+### Exercise
+* Open Verilog file s27_eco.v, what differences you find compared to s27.v
+
+![lab5 s27 v](https://user-images.githubusercontent.com/105622389/220734824-6b27e0c5-27fd-4280-aa35-1b3ad9a42271.jpg)
+![lab5 s27_eco v](https://user-images.githubusercontent.com/105622389/220734846-9debfb7e-f1dd-4255-92d4-040a53f41b9e.jpg)
+
+** Comparing both the verilog files we can notice there is new clkbuffer created i.e., clkbuf16 and few corresponding wire changes in clkbuf15 etc as ,mentioned in the above lab snapshots.
+
+- Reports generated after the run.tcl file execution. 
+- Following are the before and after ECO changes reports. 
+
+* Setup check of before and after ECO changes
+
+![lab5 max before eco](https://user-images.githubusercontent.com/105622389/220735740-edb59d61-57e7-4a03-8a8d-46a92f6bac8d.jpg)
+![lab5 max after eco](https://user-images.githubusercontent.com/105622389/220735778-f1737e5c-17f3-4e5c-9f19-21671f309e10.jpg)
+
+* Hold Check of before and after ECO changes
+
+![lab5 min before eco](https://user-images.githubusercontent.com/105622389/220736050-64c9b16f-75f6-4742-aedd-8c5b6b690816.jpg)
+![lab5 min after eco](https://user-images.githubusercontent.com/105622389/220736023-f9606a10-0b6e-4683-9bd4-391c70d1a152.jpg)
+
+## Acknowledgements
+
+- [Kunal Ghosh](https://github.com/kunalg123), Co-founder of VLSI System Design (VSD) Corp. Pvt. Ltd.
+- [Vikas Sachdeva](https://vlsideepdive.com/), Advisor, Tech and VLSI Coach, Trainer and Innovator at vlsideepdive.
+
+## Author
+
+[Lokeshwar Peddigari](https://www.linkedin.com/in/lokeshwar-peddigari), B.Tech ECE (2019-23), IFHE(ICFAI foundation for Higher Education), Hyderabad, Telangana, India
+- Contact: lokeshwarpeddigari@gmail.com  <br>
+- System configuration during the undertaking:  <br>\
+-- Processor: Intel(R) Core(TM) i5-9300H CPU @ 2.40GHz   <br>\
+-- Installed RAM: 8.00 GB   <br>\
+-- System type:	Windows 11, 64-bit operating system, x64-based processor, Ubuntu 22.04 64-bit OS(virtual Box) <br>
